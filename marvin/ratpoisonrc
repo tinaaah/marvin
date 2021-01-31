@@ -1,0 +1,23 @@
+# Setting escape key to the Tux key
+escape Super_L
+
+# Overriding mod + 'c' to start urxvt instead of xterm
+bind c exec urxvt
+
+# Bind firefox
+bind f exec firefox
+
+# Display time
+bind a exec ratpoison -c "echo $(date +'%a %b %d %k:%M+)"
+
+# Multiple workspaces
+exec /usr/bin/rpws init 6 -k
+
+bind 1 exec rpws 1
+bind 2 exec rpws 2
+bind 3 exec rpws 3
+bind 4 exec rpws 4
+bind 5 exec rpws 5
+bind 6 exec rpws 6
+
+

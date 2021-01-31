@@ -1,0 +1,76 @@
+! Xcursor ----------------------------------------------------------
+
+Xcursor.theme:  /usr/share/cursors/xorg-x11/gentoo
+Xcursor.size:   22
+
+! URxvt ------------------------------------------------------------
+! zaradi screena (screenrc ne mara imen daljših od 20 znakov?)
+URxvt.termName: rxvt-256color
+
+!URxvt.font:     xft:Droid Sans Mono:size=8
+URxvt.font:     xft:bitstream vera sans mono:size=10
+URxvt.boldfont:     xft:bitstream vera sans mono:bold:size=10
+URxvt.letterSpace: 0
+
+URxvt.dynamicsColors:   on
+URxvt.scrollBar:        false
+URxvt.underlineURLs:    true
+
+
+! Terminal colours ------------------------------------------------
+
+*background:		    #404040
+*foreground:		    #fcfae1
+urxvt*.transparent:	    false
+*fading:		    10
+*fadeColor:		    #002b36
+*cursorColor:		    #f595a7
+*pointerColorBackground:    #586e75
+*pointerColorForeground:    #586e75
+
+! Black
+*color0:		    #404040
+*color8:		    #262626
+
+! Red
+*color1:		    #b9454b
+*color9:		    #e75252
+
+! Green
+*color2:		    #bd8d46
+*color10:		    #dea552
+
+! Yellow
+*color3:		    #f6e497
+*color11:		    #d1c180
+
+! Blue
+*color4:		    #f595a7
+*color12:		    #d1a5ad
+
+! Magenta
+*color5:		    #d28e2a
+*color13:		    #b47a24
+
+! Cyan
+*color6:		    #ebcd4f
+*color14:		    #b9a659
+
+! White
+*color7:		    #fcfae1
+*color15:		    #f3f2e7
+
+
+! vim: et sw=2 syn=xdefaults
+!xclock -----------------------------------------------------------
+xclock*BorderWidth: 5
+!xclock*background:  black
+xclock*background:  #1b1d1e
+xclock*bodyFont:    9x15
+!xclock*border:      firebrick
+xclock*Foreground:  #8cedff
+!xclock*Foreground:  green
+xclock*highlight:   yellow
+xclock*mode:        analog
+xclock*showtitle:   off
+xclock*update:      1
