@@ -1,0 +1,194 @@
+{
+	"layer": "top", // Waybar at top layer
+	"position": "top", // Waybar position (top|bottom|left|right)
+//	"height": 30, // Waybar height (to be removed for auto height)
+//	"width": 1280, // Waybar width
+
+//	Choose the order of the modules
+	"modules-left": [
+		"custom/launcher",
+//		"custom/disk_home",
+		"custom/disk_root",
+		"wlr/workspaces",
+		"hyprland/window"
+	],
+
+	"modules-center": [
+		"clock",
+		"custom/weather"
+	],
+
+	"modules-right": [
+//		"temperature",
+		"cpu",
+		"memory",
+		"network",
+		"backlight",
+		"pulseaudio",
+		"battery",
+	    "custom/power-menu"
+//		"idle_inhibitor",
+//		"tray"
+        ],
+
+	"wlr/workspaces": {
+		"disable-scroll": false,
+		"all-outputs": true,
+		"format": "{icon}",
+		"on-click": "activate",
+		"format-icons": {
+			"active": " 󰮯",
+      	  	"default": "",
+      	}
+    },
+	
+	"hyprland/window": {
+		"format": "{}" 
+	},
+	
+	"backlight": {
+//		"device": "acpi_video1",
+		"format": "{icon} {percent}%",
+        "format-icons": ["󱩎 ", "󱩏 ", "󱩐 ", "󱩑 ", "󱩒 ", "󱩓 ", "󱩔 ", "󱩕 ", "󱩖 ", "󰛨 "],
+	},
+    "custom/weather": {
+        "format": "{}",
+        "format-alt": "{alt}: {}",
+        "format-alt-click": "click-right",
+        "interval": 1800,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/weather.sh",
+        "exec-if": "ping wttr.in -c1"
+    },
+
+	"battery": {
+		"states": {
+			// "good": 95,
+			"warning": 20,
+			"critical": 10
+		},
+		"format": "{icon} {capacity}%",
+		
+		"format-charging": " {capacity}%",
+		"format-plugged":  "{icon}< {capacity}%",
+//		"format-good": "{icon} {capacity}%",
+		"format-discharging": "{icon}  {capacity}%",
+		"format-icons": ["", "", "", "", ""]
+	},
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%b %d %Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+
+	"clock#1": {
+		"interval": 60,
+		"format": "<span>{:%H:%M | %F}</span>",
+		"tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
+		// "format-alt": "{:%Y-%m-%d}"
+	},
+
+	"clock#2": {
+		"interval": 18000,
+		"format": "{:%F} 📅",
+		"tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
+		// "format-alt": "{:%Y-%m-%d}"
+	},
+
+    "cpu": {
+      "interval": 10,
+      "format": " {}%",
+      "max-length": 10,
+      "on-click": "",
+    },
+
+	"idle_inhibitor": {
+		"format": "<span color='#589df6'>{icon}</span>",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		},
+		"on-click-right": "swaylock -eFfki ~/Pictures/lockscreen.jpeg"
+	},
+
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "format-alt":" {used:0.1f}GB",
+        "max-length": 10,
+    },
+
+	"network": {
+        /* "format-wifi": "直", */
+		"format-wifi": "{icon} {essid} " ,
+        "format-ethernet": " {essid}",
+        "format-disconnected": "睊 no connection",
+        "tooltip-format": "{essid}",
+        "on-click": "~/.config/waybar/scripts/network/rofi-network-manager.sh",
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+    },
+
+	"pulseaudio": {
+//		"scroll-step": 1, // %, can be a float
+		"format": "{icon} {volume}% | {format_source}",
+        "format-muted": "婢 | {format_source}",
+		"format-bluetooth": "{icon} {volume}% | {format_source}",
+		"format-bluetooth-muted": "婢 | {format_source}",
+
+		"format-source": " {volume}%",
+		"format-source-muted": "",
+
+		"format-icons": {
+			"headphones": "",
+			"handsfree": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", "", "墳"]
+
+		},
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+	},
+
+    "custom/power-menu": {
+        "format": " ⏻ ",
+        "on-click": "bash ~/.config/waybar/scripts/power-menu/powermenu.sh &",
+    }, 
+
+/*
+	"temperature": {
+//		"thermal-zone": 2,
+//		"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"critical-threshold": 80,
+//		"format-critical": "{temperatureC}°C {icon}",
+		"format": "<span color='#e88939'>{icon}</span> {temperatureC}°C",
+		"format-icons": ["", "", ""],
+		"tooltip": false
+	},
+*/
+	"tray": {
+		"icon-size": 18,
+		"spacing": 5
+	},
+
+	"custom/disk_home": {
+		"format": "<span color='#11eec2'> {} </span>",
+		"interval": 3600,
+		"exec": "df -h --output=avail $HOME | tail -1 | tr -d ' '",
+		"tooltip": "false"
+	},
+
+	"custom/disk_root": {
+		"format": "{}",
+		"interval": 3600,
+		"exec": "df -h --output=avail / | tail -1 | tr -d ' '",
+		"tooltip": "false"
+	},
+	"custom/launcher": {
+        "format": " ",
+        "on-click": "rofi -show drun &",
+    }
+}

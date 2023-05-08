@@ -1,0 +1,123 @@
+* {
+    border: none;
+    border-radius: 20;
+    font-family: Material Design Icons, JetBrainsMono Nerd Font, Iosevka Nerd Font;
+    padding: 0px 1px;
+	margin: 0px 0px;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+	background-color: rgba(48, 54, 95, 0);
+	color: #e5e5e5;
+	transition-property: background-color;
+  	transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+	opacity: 0;
+}
+
+#custom-launcher,
+#custom-disk_root,
+#workspaces,
+#window,
+#clock{
+	padding: 1px 10px;
+	margin: 2px 1px;
+	color: #e5e5e5;
+	background-color: rgba(22, 23, 45, 0.75);
+}
+
+#cpu,
+#memory,
+#network,
+#backlight,
+#pulseaudio,
+#battery,
+#custom-power-menu {
+	padding: 1px 10px;
+	margin: 2px 1px;
+	background-color: rgba(22, 23, 45, 0.75);
+}
+
+#workspaces button {
+  color: #686f9a;
+  box-shadow: inset 0 -3px transparent;
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+}
+
+#workspaces button.active {
+  color: #ecf0c1;
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+}
+
+/* #mode {
+    background: #64727D;
+    border-bottom: 3px solid #e5e5e5;
+}
+*/
+
+#custom-disk_root,
+#custom-launcher {
+    color: #86aaec;
+}
+
+#cpu {
+    color: #e33400;
+}
+
+#memory {
+    color: #e39400;
+}
+
+#network {
+    color: #f2ce00;
+}
+
+#network.disconnected {
+    background: #e33400;
+}
+
+#backlight {
+    color: #5ccc96;
+}
+
+#pulseaudio {
+    color: #b3a1e6;
+}
+
+#pulseaudio.muted {
+    color: #7a5ccc;
+}
+
+#battery {
+    color: #00a3cc;
+}
+
+#battery.charging {
+    color: #26A65B;
+}
+
+#custom-power-menu {
+	color: #ce6f8f;
+}
+
+
+@keyframes blink {
+    to {
+        background-color: #e5e5e5;
+        color: #0f111b;
+    }
+}
+
+#battery.warning:not(.charging) {
+    background: #e33400;
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
